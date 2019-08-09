@@ -2,6 +2,7 @@ package ru.basanov.se.command.project;
 
 import ru.basanov.se.command.AbstractCommand;
 import ru.basanov.se.entity.Project;
+import ru.basanov.se.service.ProjectService;
 
 public class ProjectCommand extends AbstractCommand {
 
@@ -21,6 +22,6 @@ public class ProjectCommand extends AbstractCommand {
 
     @Override
     public String description() {
-        return "SHow all projects";
+        return "Show all projects";
     }
 }

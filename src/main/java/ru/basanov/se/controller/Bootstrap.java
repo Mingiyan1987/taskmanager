@@ -38,4 +38,9 @@ public final class Bootstrap implements ServiceLocator {
     public ITaskService getTaskService() {
         return taskService;
     }
+
+    @Override
+    public void init() {
+        String command = scanner.next();
+    }
 }
