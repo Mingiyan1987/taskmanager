@@ -41,6 +41,7 @@ public final class Bootstrap implements ServiceLocator {
 
     @Override
     public void init() {
+        System.out.println("Введите команду:");
         String command = scanner.next();
     }
 }
