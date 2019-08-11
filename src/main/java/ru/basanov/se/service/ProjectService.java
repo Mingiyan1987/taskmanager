@@ -2,8 +2,8 @@ package ru.basanov.se.service;
 
 import ru.basanov.se.api.repository.IProjectRepository;
 import ru.basanov.se.entity.Project;
+import ru.basanov.se.entity.Task;
 
-import java.util.Collection;
 import java.util.List;
 
 public final class ProjectService implements ru.basanov.se.api.service.IProjectService {
@@ -44,5 +44,20 @@ public final class ProjectService implements ru.basanov.se.api.service.IProjectS
     @Override
     public void clear() {
         projectRepository.clear();
+    }
+
+    @Override
+    public List<Task> getListTask() {
+        return projectRepository.getListTask();
+    }
+
+    @Override
+    public void load(Project[] projects) {
+        projectRepository.merge(projects);
+    }
+
+    @Override
+    public void load(List<Project> projects) {
+        projectRepository.merge(projects);
     }
 }

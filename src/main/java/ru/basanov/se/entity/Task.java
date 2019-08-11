@@ -1,16 +1,22 @@
 package ru.basanov.se.entity;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Date;
+import java.util.UUID;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Task {
 
-    private String id;
+    private String id = UUID.randomUUID().toString();
+
     private String name;
+
     private Date startDate;
+
     private Date endDate;
 
-    public Task(String id, String name, Date startDate, Date endDate) {
-        this.id = id;
+    public Task(String name, Date startDate, Date endDate) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;

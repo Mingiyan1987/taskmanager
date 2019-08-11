@@ -1,11 +1,17 @@
-import ru.basanov.se.command.project.ProjectCommand;
+import ru.basanov.se.command.project.ProjectClearCommand;
+import ru.basanov.se.command.project.ProjectCreateCommand;
+import ru.basanov.se.command.project.ProjectListCommand;
+import ru.basanov.se.command.project.ProjectRemoveCommand;
 import ru.basanov.se.controller.Bootstrap;
-import ru.basanov.se.entity.Project;
-import ru.basanov.se.service.ProjectService;
 
 public class App {
-    public static void main(String[] args) {
+
+    private static final Class[] classes = {
+        ProjectListCommand.class, ProjectClearCommand.class, ProjectCreateCommand.class, ProjectRemoveCommand.class
+    };
+
+    public static void main(String[] args) throws Exception{
         final Bootstrap bootstrap = new Bootstrap();
-        bootstrap.init();
+        bootstrap.init(classes);
     }
 }

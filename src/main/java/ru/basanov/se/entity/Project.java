@@ -1,20 +1,26 @@
 package ru.basanov.se.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Project {
 
-    private String id;
+    private String id = UUID.randomUUID().toString();
+
     private String name;
+
     private String description;
+
     private Set<Task> tasks = new HashSet<Task>();
 
     public Project() {
     }
 
-    public Project(String id, String name, String description) {
-        this.id = id;
+    public Project(String name, String description) {
         this.name = name;
         this.description = description;
     }

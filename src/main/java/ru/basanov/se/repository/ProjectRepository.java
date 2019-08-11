@@ -1,12 +1,15 @@
 package ru.basanov.se.repository;
 
 import ru.basanov.se.entity.Project;
+import ru.basanov.se.entity.Task;
 
 import java.util.*;
 
 public class ProjectRepository implements ru.basanov.se.api.repository.IProjectRepository {
 
     private final Map<String, Project> map = new LinkedHashMap<String, Project>();
+
+    private List<Task> tasks = new ArrayList<>();
 
     public Project createProject(final String name) {
         final Project project = new Project();
@@ -53,6 +56,17 @@ public class ProjectRepository implements ru.basanov.se.api.repository.IProjectR
 
     public List<Project> getListProject() {
         return new ArrayList<>(map.values());
+    }
+
+    @Override
+    public List<Task> getListTask() {
+        tasks = null;
+        Iterator<Map.Entry<String, Project>> entries = map.entrySet().iterator();
+        while (entries.hasNext()) {
+            Map.Entry<String, Project> entry = entries.next();
+            tasks.addAll(entry.getValue().getTasks());
+        }
+        return tasks;
     }
 
     public void clear() {

@@ -1,6 +1,7 @@
 package ru.basanov.se.api.repository;
 
 import ru.basanov.se.entity.Project;
+import ru.basanov.se.entity.Task;
 
 import java.util.Collection;
 import java.util.List;
@@ -24,6 +25,8 @@ public interface IProjectRepository {
     void removeProjectById(String id);
 
     List<Project> getListProject();
+
+    List<Task> getListTask();
 
     void clear();
 }

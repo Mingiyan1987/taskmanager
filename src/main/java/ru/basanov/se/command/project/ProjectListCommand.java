@@ -2,9 +2,8 @@ package ru.basanov.se.command.project;
 
 import ru.basanov.se.command.AbstractCommand;
 import ru.basanov.se.entity.Project;
-import ru.basanov.se.service.ProjectService;
 
-public class ProjectCommand extends AbstractCommand {
+public class ProjectListCommand extends AbstractCommand {
 
     @Override
     public void execute() throws Exception {

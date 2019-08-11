@@ -43,4 +43,19 @@ public final class TaskService implements ru.basanov.se.api.service.ITaskService
     public void clear() {
         taskRepository.clear();
     }
+
+    @Override
+    public void export(List<Task> tasks) {
+
+    }
+
+    @Override
+    public void load(Task[] tasks) {
+        taskRepository.merge(tasks);
+    }
+
+    @Override
+    public void load(List<Task> tasks) {
+        taskRepository.merge(tasks);
+    }
 }
