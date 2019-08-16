@@ -54,15 +54,36 @@ public final class Bootstrap implements ServiceLocator {
     }
 
     @Override
-    public void init(Class[] classes) {
-        boolean exit = false;
-        String command;
-        while (exit) {
-            System.out.println("Введите команду:");
-
-            command = scanner.next();
-
-            
+    public void init(Class classes[]) {
+        // считываем команды по по command и записываем в commands
+        //
+        for (int i = 0; i < classes.length; i++) {
+            System.out.println(classes[i].getSimpleName());
+            try {
+                commands.put(classes[i].getSimpleName(), (AbstractCommand) classes[i].newInstance());
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
         }
+        Iterator<Map.Entry<String, AbstractCommand>> iterator = commands.entrySet().iterator();
+        boolean exit = true;
+        String com = null;
+        while (exit) {
+            System.out.println("ENTER COMMAND:");
+            com = scanner.next();
+            while (iterator.hasNext()) {
+                Map.Entry<String, AbstractCommand> entry = iterator.next();
+                if (com.equals(entry.getValue().command())) {
+                    try {
+                        entry.getValue().execute();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
     }
 }

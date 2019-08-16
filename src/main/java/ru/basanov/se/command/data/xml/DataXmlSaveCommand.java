@@ -19,8 +19,8 @@ public class DataXmlSaveCommand extends AbstractCommand {
         bootstrap.getDomainService().export(domain);
         final ObjectMapper objectMapper = new XmlMapper();
         final ObjectWriter objectWriter = objectMapper.writerWithDefaultPrettyPrinter();
-        final String json = objectWriter.writeValueAsString(domain);
-        final byte[] data = json.getBytes("UTF-8");
+        final String xml = objectWriter.writeValueAsString(domain);
+        final byte[] data = xml.getBytes("UTF-8");
         final File file = new File(DataConstant.FILE_XML);
         Files.write(file.toPath(), data);
         System.out.println("[OK]");

@@ -2,12 +2,15 @@ package ru.basanov.se.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Project {
+public class Project implements Serializable {
+
+    private static final long serialVersionUID = 1;
 
     private String id = UUID.randomUUID().toString();
 

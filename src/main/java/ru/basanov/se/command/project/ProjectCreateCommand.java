@@ -12,7 +12,7 @@ public class ProjectCreateCommand extends AbstractCommand {
 
     @Override
     public String command() {
-        return "[project-create]";
+        return "project-create";
     }
 
     @Override
